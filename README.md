@@ -1,28 +1,43 @@
-# Computer-Vision
-# UTS Computer Vision: EMNIST Character Classification
+# 🔤 Handwritten Character Classification using HOG & SVM (EMNIST Dataset)
 
-Repository ini berisi *source code* Machine Learning Pipeline untuk mengklasifikasikan karakter tulisan tangan (huruf) dari dataset EMNIST (Extended MNIST), sebagai pemenuhan tugas Ujian Tengah Semester mata kuliah RE 604 Computer Vision.
+Repositori ini berisi implementasi *Machine Learning Pipeline* end-to-end untuk mengklasifikasikan karakter tulisan tangan (huruf A-Z) berdasarkan dataset **EMNIST (Extended MNIST)**. Proyek ini menggabungkan teknik ekstraksi fitur visual **HOG (Histogram of Oriented Gradients)** dan klasifikasi **Support Vector Machine (SVM)** yang dioptimasi menggunakan *Grid Search CV*.
 
-## Identitas Mahasiswa
-* **Nama:** Tini Agustina
-* **NIM:** 4222301047
-* **Kelas:** Robotika B (Semester 6)
-* **Program Studi:** D4 Teknik Robotika
-* **Politeknik Negeri Batam**
+[![Watch Video Presentation](https://img.shields.io/badge/YouTube-Watch%20Demo-red?style=for-the-badge&logo=youtube)](https://youtu.be/OeGW-ET5LAM)
 
-## Alur Pemrosesan (Machine Learning Pipeline)
-1. **Data Preparation:** Menggunakan 2.600 sampel data seimbang dari dataset EMNIST Letters (100 sampel per kelas huruf A-Z).
-2. **Feature Extraction:** Menggunakan algoritma **HOG (Histogram of Oriented Gradients)** untuk mengekstraksi fitur visual karakter.
-3. **Classification & Tuning:** Menggunakan **Support Vector Machine (SVM)** dengan optimasi hyperparameter melalui teknik **Grid Search** (K-Fold Cross Validation).
-4. **Evaluation:** Mengukur performa model dengan metrik *Accuracy, Precision, Recall, F1-score*, serta *Confusion Matrix*.
+---
 
-## Cara Menjalankan Kode (How to Run)
-Dikarenakan ukuran file dataset terlalu besar untuk di-unggah ke GitHub (>100MB), silakan ikuti langkah berikut untuk menjalankan kode:
-1. Unduh dataset EMNIST berformat CSV melalui Kaggle: [EMNIST Dataset](https://www.kaggle.com/datasets/crawford/emnist/data)
-2. Ekstrak file dan ambil file bernama `emnist-letters-train.csv`.
-3. Letakkan file `emnist-letters-train.csv` tersebut di dalam folder (direktori) yang sama dengan file `midterm_cv.ipynb`.
-4. Jalankan file Jupyter Notebook (`midterm_cv.ipynb`) secara berurutan.
+## 🛠️ Machine Learning Pipeline
 
-## Link Video Penjelasan
-Penjelasan lengkap mengenai *source code*, pemrosesan data, parameter HOG & SVM, serta hasil evaluasi dapat dilihat pada video presentasi berikut:
-https://youtu.be/OeGW-ET5LAM?si=LkyMSHUPR7P7XJhI 
+### 1. Data Preparation
+* **Dataset:** EMNIST Letters (Huruf A-Z).
+* **Sampling:** 2.600 sampel data yang seimbang (100 sampel per kelas huruf dari A hingga Z) untuk memastikan efisiensi komputasi dan performa model yang stabil.
+
+### 2. Feature Extraction (HOG)
+Mengekstraksi fitur visual karakter tulisan tangan menggunakan algoritma **Histogram of Oriented Gradients (HOG)** dengan konfigurasi parameter:
+* `orientations`: 9
+* `pixels_per_cell`: (8, 8)
+* `cells_per_block`: (2, 2)
+
+### 3. Classification & Hyperparameter Tuning
+* **Model Base:** Support Vector Machine (SVM).
+* **Optimization:** *Grid Search* dengan *K-Fold Cross Validation* untuk menemukan kombinasi nilai `C`, `gamma`, dan `kernel` yang paling optimal.
+
+### 4. Model Evaluation & Results
+Model dievaluasi menggunakan data uji (*testing data*) untuk mengukur kestabilan prediksi:
+* **Metrik Utama:** Accuracy, Precision, Recall, dan F1-Score.
+* **Confusion Matrix:** Prediksi terdistribusi secara konsisten di sepanjang garis diagonal utama, menunjukkan misklasifikasi yang sangat minim antar-karakter.
+
+---
+
+## 📸 Demo & Penjelasan Video
+Penjelasan rinci mengenai alur pemrosesan kode, ekstraksi fitur HOG, *tuning* SVM, hingga analisis *Confusion Matrix* dapat dilihat pada video berikut:
+▶️ **[Nonton Video Penjelasan Proyek di YouTube](https://youtu.be/OeGW-ET5LAM)**
+
+---
+
+## 🚀 Cara Menjalankan Kode (How to Run)
+
+1. **Clone Repositori Ini:**
+   ```bash
+   git clone [https://github.com/Tiniagustina/EMNIST-Character-Classification-HOG-SVM.git](https://github.com/Tiniagustina/EMNIST-Character-Classification-HOG-SVM.git)
+   cd EMNIST-Character-Classification-HOG-SVM
